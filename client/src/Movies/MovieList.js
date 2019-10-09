@@ -4,19 +4,19 @@ import axios from 'axios';
 import MovieCard from './MovieCard.js'
 
 const MovieList = props => {
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState([]);
   useEffect(() => {
     const getMovies = () => {
       axios
-        .get('http://localhost:5000/api/movies')
+        .get("http://localhost:5000/api/movies")
         .then(response => {
           setMovies(response.data);
         })
         .catch(error => {
-          console.error('Server Error', error);
+          console.error("Server Error", error);
         });
-    }
-    
+    };
+
     getMovies();
   }, []);
   
@@ -25,6 +25,6 @@ const MovieList = props => {
       <MovieCard movies={movies} />
     </div>
   );
-}
+};
 
 export default MovieList;
